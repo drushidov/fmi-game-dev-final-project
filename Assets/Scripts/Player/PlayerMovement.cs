@@ -1,28 +1,44 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Camera cam;
+    private Camera mainCamera;
     private NavMeshAgent agent;
+    private PlayerInputActions playerInputActions;
+
+    private void Awake()
+    {
+        playerInputActions = new PlayerInputActions();
+    }
 
     private void Start()
     {
-        cam = Camera.main;
+        mainCamera = Camera.main;
         agent = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
+    private void OnEnable()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+        playerInputActions.Enable();
+        playerInputActions.Player.ClickToMove.performed += Move;
+    }
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                agent.SetDestination(hit.point);
-            }
+    private void OnDisable()
+    {
+        playerInputActions.Player.ClickToMove.performed -= Move;
+        playerInputActions.Disable();
+    }
+
+    private void Move(InputAction.CallbackContext context)
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            agent.SetDestination(hit.point);
         }
     }
 }

@@ -3160,6 +3160,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 3, z: 41}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1987484173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7170726911687733847, guid: a3afd158f800a974598a693fe4e958ae, type: 3}
+  m_PrefabInstance: {fileID: 4829292884926573205}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1987484178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987484173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f71309a624e7b4c8138fc235492713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2011024987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3477,12 +3494,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 336215108, guid: a3afd158f800a974598a693fe4e958ae, type: 3}
+      propertyPath: m_AutoBraking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 336215108, guid: a3afd158f800a974598a693fe4e958ae, type: 3}
       propertyPath: m_Acceleration
       value: 999
       objectReference: {fileID: 0}
     - target: {fileID: 336215108, guid: a3afd158f800a974598a693fe4e958ae, type: 3}
       propertyPath: m_AngularSpeed
       value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 336215108, guid: a3afd158f800a974598a693fe4e958ae, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3015300576757939660, guid: a3afd158f800a974598a693fe4e958ae, type: 3}
       propertyPath: m_RootOrder
