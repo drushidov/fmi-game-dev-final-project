@@ -13,7 +13,6 @@ public class PlayerAnimationEvents : MonoBehaviour
 
     public void UsePlayerWeapon()
     {
-        Debug.Log("Bullet spawned");
         playerWeapon.Use();
     }
 }

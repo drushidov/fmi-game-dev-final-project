@@ -13,6 +13,5 @@ public class Gun : Weapon
         bulletRotation.x = 0;
         bulletRotation.z = 0;
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletRotation);
-
     }
 }

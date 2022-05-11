@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, 1000.0f, LayerMask.GetMask("ClickToMove")))
         {
             animator.SetBool("isMoving", true);
             agent.SetDestination(hit.point);
