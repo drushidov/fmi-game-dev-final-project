@@ -5,16 +5,26 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float maxHealth = 100.0f;
+    public float initialMaxHealth = 100.0f;
+    private float maxHealth;
     private float currentHealth;
+    private List<PlayerBonus> appliedBonuses;
 
-    public Action<float, float> OnDamageTaken;
-    public Action<float, float> OnHeal;
+    public Action<float, float> OnHealthChanged;
+    public Action<float> OnMaxHealthChanged;
     public Action OnDeath;
 
-    private void Start()
+    private void Awake()
     {
+        maxHealth = initialMaxHealth;
         currentHealth = maxHealth;
+        appliedBonuses = new List<PlayerBonus>();
+    }
+
+    public void CalculateMaxHealth(float bonus)
+    {
+        maxHealth = initialMaxHealth + bonus;
+        OnMaxHealthChanged?.Invoke(maxHealth);
     }
 
     public float GetHealth()
@@ -22,8 +32,15 @@ public class PlayerHealth : MonoBehaviour
         return currentHealth;
     }
 
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
     public void TakeDamage(float damage)
     {
+        float previousHealth = currentHealth;
+
         currentHealth -= damage;
         
         if (currentHealth <= 0)
@@ -32,13 +49,15 @@ public class PlayerHealth : MonoBehaviour
             Die();
         }
 
-        OnDamageTaken?.Invoke(damage, currentHealth);
+        OnHealthChanged?.Invoke(previousHealth, currentHealth);
 
         Debug.Log("Player took " + damage + " damage");
     }
 
     public void Heal(float amount)
     {
+        float previousHealth = currentHealth;
+
         currentHealth += amount;
 
         if (currentHealth > maxHealth)
@@ -46,7 +65,18 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = maxHealth;
         }
 
-        OnHeal?.Invoke(amount, currentHealth);
+        OnHealthChanged?.Invoke(previousHealth, currentHealth);
+    }
+
+    public void ApplyBonus(PlayerBonus bonus)
+    {
+        if (bonus.Type != PlayerBonusType.Health)
+        {
+            Debug.Log("Wrong bonus applied to player health");
+            return;
+        }
+
+        appliedBonuses.Add(bonus);
     }
 
     public void Die()

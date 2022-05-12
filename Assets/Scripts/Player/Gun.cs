@@ -6,6 +6,12 @@ public class Gun : Weapon
 {
     public Transform bulletSpawnPosition;
     public GameObject bulletPrefab;
+    private PlayerStats playerStats;
+
+    private void Awake()
+    {
+        playerStats = GetComponent<PlayerStats>();
+    }
 
     public override void Use()
     {
@@ -13,5 +19,6 @@ public class Gun : Weapon
         bulletRotation.x = 0;
         bulletRotation.z = 0;
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPosition.position, bulletRotation);
+        bullet.GetComponent<Bullet>().SetDamage(playerStats.GetDamage());
     }
 }

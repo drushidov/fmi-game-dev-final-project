@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 1.0f;
     public float maxDistance = 20.0f;
-    public float damage = 30.0f;
+    public float damage = 0f;
 
     private Vector3 initialPosition;
     private Rigidbody rb;
@@ -36,5 +36,10 @@ public class Bullet : MonoBehaviour
         }
 
         Destroy(this.gameObject);
+    }
+
+    public void SetDamage(float damage)
+    {
+        this.damage = damage;
     }
 }
