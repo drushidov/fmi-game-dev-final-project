@@ -6,7 +6,6 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private float baseDamage = 10.0f;
     private float damage;
-    [SerializeField] private float movementSpeed = 1.0f;
 
     private PlayerHealth playerHealth;
     private Animator animator;
@@ -23,12 +22,6 @@ public class PlayerStats : MonoBehaviour
         ProcessBonuses();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public float GetDamage()
     {
         return damage;
@@ -43,17 +36,19 @@ public class PlayerStats : MonoBehaviour
     {
         foreach (PlayerBonus bonus in playerBonuses)
         {
+            float valueToUpdate = bonus.InitialValue + (bonus.Points * bonus.ValueIncreasePerPoint);
+
             switch (bonus.Type)
             {
                 case PlayerBonusType.Health:
-                    OnHealthBonusUpdate(bonus.GetInitialValue() + (bonus.GetPoints() * bonus.GetValueIncreasePerPoint()));
+                    OnHealthBonusUpdate(valueToUpdate);
                     bonus.OnValuesUpdate += OnHealthBonusUpdate;
                     break;
                 case PlayerBonusType.Damage:
-                    OnDamageBonusUpdate(bonus.GetInitialValue() + (bonus.GetPoints() * bonus.GetValueIncreasePerPoint()));
+                    OnDamageBonusUpdate(valueToUpdate);
                     break;
                 case PlayerBonusType.Speed:
-                    OnSpeedBonusUpdate(bonus.GetInitialValue() + (bonus.GetPoints() * bonus.GetValueIncreasePerPoint()));
+                    OnSpeedBonusUpdate(valueToUpdate);
                     break;
             }
         }

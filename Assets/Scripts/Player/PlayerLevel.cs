@@ -5,41 +5,33 @@ using UnityEngine;
 
 public class PlayerLevel : MonoBehaviour
 {
-    public int level = 1;
-
-    public Action<int> OnLevelUp;
-
-    private int xp = 0;
+    public IntValue level;
+    public IntValue playerXp;
+    
     private int nextLevelXp = 100;
     private int availableSkillPoints = 0;
 
     private void LevelUp()
     {
-        level++;
+        level.Value++;
         availableSkillPoints++;
-        xp = 0;
-        nextLevelXp *= 2;
 
-        OnLevelUp?.Invoke(level);
+        playerXp.Value = 0;
+        nextLevelXp *= 2;
     }
 
     public void IncreaseXp(int amount)
     {
-        int xpNeededToLevelUp = nextLevelXp - xp;
+        int xpNeededToLevelUp = nextLevelXp - playerXp.Value;
 
         while (amount >= xpNeededToLevelUp)
         {
             amount -= xpNeededToLevelUp;
             LevelUp();
-            xpNeededToLevelUp = nextLevelXp - xp;
+            xpNeededToLevelUp = nextLevelXp - playerXp.Value;
         }
 
-        xp += amount;
-    }
-
-    public int GetLevel()
-    {
-        return level;
+        playerXp.Value += amount;
     }
 
     public int GetAvailableSkillPoints()

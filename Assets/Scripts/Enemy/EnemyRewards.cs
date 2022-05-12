@@ -27,7 +27,8 @@ public class EnemyRewards : MonoBehaviour
 
     void RewardPlayerXP()
     {
-        Debug.Log("Rewarding player XP");
+        EnemyStats enemyStats = GetComponent<EnemyStats>();
+        player.GetComponent<PlayerLevel>().IncreaseXp(enemyStats.level * enemyStats.baseXpOnKill);
     }
 
     void DropRewards()

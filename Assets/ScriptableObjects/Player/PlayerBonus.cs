@@ -8,44 +8,41 @@ public class PlayerBonus : ScriptableObject
 {
     public string Name;
     public PlayerBonusType Type;
-    [SerializeField] private float InitialValue;
-    [SerializeField] private int Points;
-    [SerializeField] private float ValueIncreasePerPoint;
+    [SerializeField] private float initialValue;
+    [SerializeField] private int points;
+    [SerializeField] private float valueIncreasePerPoint;
+
+    public float InitialValue
+    {
+        get { return initialValue; }
+        set
+        {
+            initialValue = value;
+            ValuesUpdated();
+        }
+    }
+
+    public int Points
+    {
+        get { return points; }
+        set
+        {
+            points = value;
+            ValuesUpdated();
+        }
+    }
+
+    public float ValueIncreasePerPoint
+    {
+        get { return valueIncreasePerPoint; }
+        set
+        {
+            valueIncreasePerPoint = value;
+            ValuesUpdated();
+        }
+    }
 
     public Action<float> OnValuesUpdate;
-
-    public float GetInitialValue()
-    {
-        return InitialValue;
-    }
-
-    public int GetPoints()
-    {
-        return Points;
-    }
-
-    public float GetValueIncreasePerPoint()
-    {
-        return ValueIncreasePerPoint;
-    }
-
-    public void SetInitialValue(float value)
-    {
-        InitialValue = value;
-        ValuesUpdated();
-    }
-
-    public void SetPoints(int points)
-    {
-        Points = points;
-        ValuesUpdated();
-    }
-
-    public void SetValuePerPoint(float value)
-    {
-        ValueIncreasePerPoint = value;
-        ValuesUpdated();
-    }
 
     public void ValuesUpdated()
     {

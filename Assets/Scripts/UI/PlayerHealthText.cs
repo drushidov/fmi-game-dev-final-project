@@ -32,11 +32,6 @@ public class PlayerHealthText : MonoBehaviour
         playerHealth.OnMaxHealthChanged -= OnPlayerMaxHealthChanged;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void OnPlayerHealthChanged(float previousHealth, float currentHealth)
     {
         playerHealthText.text = "Player Health: " + currentHealth + ", Max Health: " + playerHealth.GetMaxHealth();
@@ -53,7 +48,7 @@ public class PlayerHealthText : MonoBehaviour
         {
             if (playerBonus.Type == PlayerBonusType.Health)
             {
-                playerBonus.SetPoints(playerBonus.GetPoints() + 1);
+                playerBonus.Points++;
                 break;
             }
         }
