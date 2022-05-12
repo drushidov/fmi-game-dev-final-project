@@ -2609,7 +2609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c381be466742b584a9540c68f2724727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 100
   maxAttackDistance: 3
   attackCooldown: 4
 --- !u!1001 &1545200506
@@ -3247,6 +3247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a0012ccf359724dbf629485368d33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1001 &2011024987
 PrefabInstance:
   m_ObjectHideFlags: 0
