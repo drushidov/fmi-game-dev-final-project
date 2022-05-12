@@ -6,21 +6,37 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 1.0f;
     public float maxDistance = 20.0f;
+    public float damage = 30.0f;
 
     private Vector3 initialPosition;
+    private Rigidbody rb;
 
     void Start()
     {
         initialPosition = transform.position;
+        rb = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
     {
-        transform.position += transform.forward * Time.fixedDeltaTime * speed;
+        rb.MovePosition(transform.position + transform.forward * Time.fixedDeltaTime * speed);
 
         if (Vector3.Distance(initialPosition, transform.position) >= maxDistance)
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Bullet collided with something");
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Bullet collided with enemy");
+            EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
+            enemyHealth.TakeDamage(damage);
+        }
+
+        Destroy(this.gameObject);
     }
 }
