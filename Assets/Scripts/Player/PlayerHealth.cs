@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private float maxHealth = 100.0f;
+    public float maxHealth = 100.0f;
     private float currentHealth;
 
     public Action<float, float> OnDamageTaken;
@@ -29,11 +29,12 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-
-            OnDeath?.Invoke();
+            Die();
         }
 
         OnDamageTaken?.Invoke(damage, currentHealth);
+
+        Debug.Log("Player took " + damage + " damage");
     }
 
     public void Heal(float amount)
@@ -46,5 +47,11 @@ public class PlayerHealth : MonoBehaviour
         }
 
         OnHeal?.Invoke(amount, currentHealth);
+    }
+
+    public void Die()
+    {
+        gameObject.SetActive(false);
+        OnDeath?.Invoke();
     }
 }

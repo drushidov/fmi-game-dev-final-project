@@ -4,20 +4,11 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public float damage = 10.0f;
+    public float maxAttackDistance = 3.0f;
     public float attackCooldown = 4.0f;
+
     private bool canAttack = true;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public bool CanAttack()
     {
