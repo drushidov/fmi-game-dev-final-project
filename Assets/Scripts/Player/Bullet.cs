@@ -29,10 +29,8 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Bullet collided with something");
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Bullet collided with enemy");
             EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
             enemyHealth.TakeDamage(damage);
         }
