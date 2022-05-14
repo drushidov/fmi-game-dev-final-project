@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class EnemyRewards : MonoBehaviour
 {
-    private GameObject player;
+    public IntValue playerXp;
     private EnemyHealth enemyHealth;
 
     void Awake()
     {
-        player = GameObject.FindWithTag("Player");
         enemyHealth = GetComponent<EnemyHealth>();
     }
 
@@ -28,7 +27,7 @@ public class EnemyRewards : MonoBehaviour
     void RewardPlayerXP()
     {
         EnemyStats enemyStats = GetComponent<EnemyStats>();
-        player.GetComponent<PlayerLevel>().IncreaseXp(enemyStats.level * enemyStats.baseXpOnKill);
+        playerXp.Value += enemyStats.level * enemyStats.baseXpOnKill;
     }
 
     void DropRewards()

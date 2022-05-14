@@ -10,6 +10,16 @@ public class PlayerLevel : MonoBehaviour
     public IntValue nextLevelXp;
     public IntValue availableSkillPoints;
 
+    private void OnEnable()
+    {
+        playerXp.OnValueChanged += OnXpValueChanged;
+    }
+
+    private void OnDisable()
+    {
+        playerXp.OnValueChanged -= OnXpValueChanged;
+    }
+
     private void LevelUp()
     {
         level.Value++;
@@ -19,17 +29,23 @@ public class PlayerLevel : MonoBehaviour
         nextLevelXp.Value *= 2;
     }
 
-    public void IncreaseXp(int amount)
+    private void OnXpValueChanged(int newValue)
     {
-        int xpNeededToLevelUp = nextLevelXp.Value - playerXp.Value;
+        int playerXpValue = playerXp.Value;
 
-        while (amount >= xpNeededToLevelUp)
+        // To prevent constant triggering of this method by setting the playerXp.Value,
+        // if the XP is not enough to level up, return
+        if (playerXpValue < nextLevelXp.Value)
         {
-            amount -= xpNeededToLevelUp;
-            LevelUp();
-            xpNeededToLevelUp = nextLevelXp.Value - playerXp.Value;
+            return;
         }
 
-        playerXp.Value += amount;
+        while (playerXpValue >= nextLevelXp.Value)
+        {
+            playerXpValue -= nextLevelXp.Value;
+            LevelUp();
+        }
+
+        playerXp.Value = playerXpValue;
     }
 }

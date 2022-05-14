@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1527475358}
   - component: {fileID: 6728772558751078871}
   - component: {fileID: 1527475360}
+  - component: {fileID: 3640419237467274871}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -144,6 +145,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88df0e6d04060b44e8288d833eda36a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerXp: {fileID: 11400000, guid: 221498c24217b954994cc9b50b82ba04, type: 2}
+--- !u!114 &3640419237467274871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994631236668177033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3f7904f93dd3e4395c065babaf094a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  baseXpOnKill: 2
 --- !u!1 &8471406522659791278
 GameObject:
   m_ObjectHideFlags: 0
