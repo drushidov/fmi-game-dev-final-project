@@ -4558,6 +4558,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3640419237467274871, guid: 22aaeefce85bce643b7b874d5875fe70, type: 3}
+      propertyPath: baseXpOnKill
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6728772558751078871, guid: 22aaeefce85bce643b7b874d5875fe70, type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22aaeefce85bce643b7b874d5875fe70, type: 3}
 --- !u!1001 &1895839308997248573

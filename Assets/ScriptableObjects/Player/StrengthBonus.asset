@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Strength
   Type: 0
-  initialValue: 100
-  points: 0
-  valueIncreasePerPoint: 0
+  initialValue: 0
+  points: 2
+  valueIncreasePerPoint: 50

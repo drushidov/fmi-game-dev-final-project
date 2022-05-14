@@ -46,9 +46,11 @@ public class PlayerStats : MonoBehaviour
                     break;
                 case PlayerBonusType.Damage:
                     OnDamageBonusUpdate(valueToUpdate);
+                    bonus.OnValuesUpdate += OnDamageBonusUpdate;
                     break;
                 case PlayerBonusType.Speed:
                     OnSpeedBonusUpdate(valueToUpdate);
+                    bonus.OnValuesUpdate += OnSpeedBonusUpdate;
                     break;
             }
         }
