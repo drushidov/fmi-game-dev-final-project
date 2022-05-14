@@ -7,35 +7,29 @@ public class PlayerLevel : MonoBehaviour
 {
     public IntValue level;
     public IntValue playerXp;
-    
-    private int nextLevelXp = 100;
-    private int availableSkillPoints = 0;
+    public IntValue nextLevelXp;
+    public IntValue availableSkillPoints;
 
     private void LevelUp()
     {
         level.Value++;
-        availableSkillPoints++;
+        availableSkillPoints.Value++;
 
         playerXp.Value = 0;
-        nextLevelXp *= 2;
+        nextLevelXp.Value *= 2;
     }
 
     public void IncreaseXp(int amount)
     {
-        int xpNeededToLevelUp = nextLevelXp - playerXp.Value;
+        int xpNeededToLevelUp = nextLevelXp.Value - playerXp.Value;
 
         while (amount >= xpNeededToLevelUp)
         {
             amount -= xpNeededToLevelUp;
             LevelUp();
-            xpNeededToLevelUp = nextLevelXp - playerXp.Value;
+            xpNeededToLevelUp = nextLevelXp.Value - playerXp.Value;
         }
 
         playerXp.Value += amount;
-    }
-
-    public int GetAvailableSkillPoints()
-    {
-        return availableSkillPoints;
     }
 }
