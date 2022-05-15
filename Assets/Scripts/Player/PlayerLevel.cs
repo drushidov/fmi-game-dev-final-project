@@ -10,14 +10,6 @@ public class PlayerLevel : MonoBehaviour
     public IntValue nextLevelXp;
     public IntValue availableSkillPoints;
 
-    private void Start()
-    {
-        level.Value = 1;
-        playerXp.Value = 0;
-        nextLevelXp.Value = 100;
-        availableSkillPoints.Value = 1;
-    }
-
     private void OnEnable()
     {
         playerXp.OnValueChanged += OnXpValueChanged;

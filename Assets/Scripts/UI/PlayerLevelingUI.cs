@@ -11,17 +11,24 @@ public class PlayerLevelingUI : MonoBehaviour
     public IntValue playerLevel;
     public IntValue availableSkillPoints;
 
+    public Slider xpBarSlider;
+    public GameObject levelTextObject;
+    public GameObject skillPointsTextObject;
+
     public GameObject playerLevelUpUI;
     public GameObject skillUpgradesUI;
     public GameObject skillUpgradeUI;
 
-    private TextMeshProUGUI xpText;
+    private TextMeshProUGUI levelText;
+    private TextMeshProUGUI skillPointsText;
+
     private PlayerBonus[] playerBonuses;
 
-    private void Start()
+    private void Awake()
     {
-        xpText = GetComponent<TextMeshProUGUI>();
-        xpText.text = "Player XP: " + playerXp.Value + ", Next Level XP: " + playerNextLevelXp.Value;
+        levelText = levelTextObject.GetComponent<TextMeshProUGUI>();
+        skillPointsText = skillPointsTextObject.GetComponent<TextMeshProUGUI>();
+
         playerBonuses = GameObject.FindWithTag("Player").GetComponent<PlayerStats>().GetBonuses();
 
         GameObject skillUpgrade;
@@ -31,6 +38,8 @@ public class PlayerLevelingUI : MonoBehaviour
             skillUpgrade = Instantiate(skillUpgradeUI, skillUpgradesUI.transform);
             skillUpgrade.GetComponent<SkillUpgrade>().SetBonus(bonus);
         }
+
+        UpdateSlider();
     }
 
     private void OnEnable()
@@ -57,7 +66,7 @@ public class PlayerLevelingUI : MonoBehaviour
             return;
         }
 
-        xpText.text = "Player XP: " + newXp + ", Next Level XP: " + playerNextLevelXp.Value;
+        UpdateSlider();
     }
 
     void OnPlayerNextLevelXpChanged(int newNextLevelXp)
@@ -68,20 +77,30 @@ public class PlayerLevelingUI : MonoBehaviour
             return;
         }
 
-        xpText.text = "Player XP: " + playerXp.Value + ", Next Level XP: " + newNextLevelXp;
+        UpdateSlider();
     }
 
     void OnPlayerLevelChanged(int newLevel)
     {
-        playerLevelUpUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "You reached Level " + playerLevel.Value + "! Available skill points: " + availableSkillPoints.Value;
+        levelText.text = "Level: " + newLevel;
+
+        playerLevelUpUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "You reached Level " + newLevel + "! Available skill points: " + availableSkillPoints.Value;
         playerLevelUpUI.SetActive(true);
     }
 
     void OnAvailableSkillPointsChanged(int newValue)
     {
+        skillPointsText.text = "Available Skill Points: " + newValue;
+
         if (newValue == 0)
         {
             playerLevelUpUI.SetActive(false);
         }
+    }
+
+    void UpdateSlider()
+    {
+        float sliderValue = (playerXp.Value * 1.0f) / (playerNextLevelXp.Value * 1.0f);
+        xpBarSlider.value = sliderValue;
     }
 }

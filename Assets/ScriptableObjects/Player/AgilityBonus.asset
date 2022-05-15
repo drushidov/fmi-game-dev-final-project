@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Agility
   Type: 2
-  InitialValue: 10
-  Points: 0
-  ValueIncreasePerPoint: 5
+  initialValue: 0
+  points: 1
+  valueIncreasePerPoint: 10

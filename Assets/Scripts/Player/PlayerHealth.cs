@@ -6,19 +6,22 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public float initialMaxHealth = 100.0f;
-    private float maxHealth;
-    private float currentHealth;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float currentHealth;
     private List<PlayerBonus> appliedBonuses;
 
     public Action<float, float> OnHealthChanged;
     public Action<float> OnMaxHealthChanged;
     public Action OnDeath;
 
-    private void Awake()
+    private void Start()
     {
         maxHealth = initialMaxHealth;
         currentHealth = maxHealth;
         appliedBonuses = new List<PlayerBonus>();
+
+        OnHealthChanged?.Invoke(0f, currentHealth);
+        OnMaxHealthChanged?.Invoke(maxHealth);
     }
 
     public void CalculateMaxHealth(float bonus)
