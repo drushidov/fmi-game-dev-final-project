@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c381be466742b584a9540c68f2724727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 10
   maxAttackDistance: 3
   attackCooldown: 4
 --- !u!114 &6728772558751078871
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ef363eb9525c843ac59282b556f423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
 --- !u!114 &1527475360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  baseXpOnKill: 2
+  baseXpOnKill: 20
 --- !u!1 &8471406522659791278
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnDeath()
     {
-        animator.SetTrigger("die");
+        animator.SetBool("dead", true);
     }
 
     public bool CanAttack()
