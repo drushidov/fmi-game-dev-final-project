@@ -131,7 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ef363eb9525c843ac59282b556f423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  baseMaxHealth: 20
+  currentHealth: 0
 --- !u!114 &1527475360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,11 +158,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3f7904f93dd3e4395c065babaf094a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
+  level: 0
   baseXpOnKill: 5
   xpBonusPerLevel: 5
   healthBonusPerLevel: 5
-  damage: 10
+  baseDamage: 10
   damageBonusPerLevel: 5
 --- !u!1 &8471406522659791278
 GameObject:
