@@ -47,6 +47,17 @@ public class EnemyHealth : MonoBehaviour
         OnHeal?.Invoke(amount, currentHealth);
     }
 
+    public void SetMaxHealth(float newMaxHealth)
+    {
+        maxHealth = newMaxHealth;
+        currentHealth = maxHealth;
+    }
+
+    public void SetHealth(float newHealth)
+    {
+        currentHealth = newHealth;
+    }
+
     public void Die()
     {
         OnDeath?.Invoke();

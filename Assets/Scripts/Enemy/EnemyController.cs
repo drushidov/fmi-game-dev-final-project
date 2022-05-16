@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float damage = 10.0f;
     public float maxAttackDistance = 3.0f;
     public float attackCooldown = 4.0f;
 

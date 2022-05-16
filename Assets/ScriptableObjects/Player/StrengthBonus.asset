@@ -16,4 +16,4 @@ MonoBehaviour:
   Type: 0
   initialValue: 0
   points: 0
-  valueIncreasePerPoint: 50
+  valueIncreasePerPoint: 5

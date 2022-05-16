@@ -6,11 +6,13 @@ public class EnemyAnimationEvents : MonoBehaviour
 {
     private GameObject player;
     private EnemyController enemyController;
+    private EnemyStats enemyStats;
 
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         enemyController = transform.parent.GetComponent<EnemyController>();
+        enemyStats = transform.parent.GetComponent<EnemyStats>();
     }
     
     public void DamagePlayer()
@@ -19,7 +21,7 @@ public class EnemyAnimationEvents : MonoBehaviour
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
 
-            playerHealth.TakeDamage(enemyController.damage);
+            playerHealth.TakeDamage(enemyStats.damage + (enemyStats.level * enemyStats.damageBonusPerLevel));
         }
     }
 }
