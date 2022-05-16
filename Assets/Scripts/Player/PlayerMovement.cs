@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -8,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
     private PlayerInputActions playerInputActions;
+
+    private Coroutine moveCoroutine;
+
     public bool canMove = true;
 
     private void Awake()
@@ -21,12 +25,13 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         playerInputActions.Enable();
-        playerInputActions.Player.ClickToMove.performed += Move;
+        playerInputActions.Player.ClickToMove.performed += OnMoveStarted;
+        playerInputActions.Player.ClickToMove.canceled += OnMoveCanceled;
     }
 
-    private void OnDisable()
-    {
-        playerInputActions.Player.ClickToMove.performed -= Move;
+    private void OnDisable() {
+        playerInputActions.Player.ClickToMove.performed -= OnMoveStarted;
+        playerInputActions.Player.ClickToMove.canceled -= OnMoveCanceled;
         playerInputActions.Disable();
     }
 
@@ -40,21 +45,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Move(InputAction.CallbackContext context)
+    private void OnMoveStarted(InputAction.CallbackContext context)
     {
-        if (!canMove)
-        {
-            return;
-        }
+        moveCoroutine = StartCoroutine(Move());
+    }
 
-        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, 1000.0f, LayerMask.GetMask("ClickToMove")))
-        {
-            animator.SetBool("isMoving", true);
-            agent.SetDestination(hit.point);
-        }
+    private void OnMoveCanceled(InputAction.CallbackContext context)
+    {
+        StopCoroutine(moveCoroutine);
+        agent.ResetPath();
     }
 
     public void StopPlayerMovement()
@@ -63,10 +62,28 @@ public class PlayerMovement : MonoBehaviour
         agent.velocity = Vector3.zero;
         agent.ResetPath();
         animator.SetBool("isMoving", false);
+        canMove = false;
     }
 
     public void ResumePlayerMovement()
     {
         agent.isStopped = false;
+        canMove = true;
+    }
+
+    IEnumerator Move()
+    {
+        while (canMove) {
+            Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 1000.0f, LayerMask.GetMask("ClickToMove")))
+            {
+                animator.SetBool("isMoving", true);
+                agent.SetDestination(hit.point);
+            }
+
+            yield return null;
+        }
     }
 }
