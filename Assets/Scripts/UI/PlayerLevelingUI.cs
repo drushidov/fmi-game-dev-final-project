@@ -22,6 +22,12 @@ public class PlayerLevelingUI : MonoBehaviour
         availableSkillPoints.OnValueChanged -= OnAvailableSkillPointsChanged;
     }
 
+    private void Start()
+    {
+        OnPlayerLevelChanged(playerLevel.Value);
+        OnAvailableSkillPointsChanged(availableSkillPoints.Value);
+    }
+
     void OnPlayerLevelChanged(int newLevel)
     {
         levelText.text = "Level: " + newLevel;
