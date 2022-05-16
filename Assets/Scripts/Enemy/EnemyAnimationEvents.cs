@@ -21,7 +21,7 @@ public class EnemyAnimationEvents : MonoBehaviour
         {
             PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
 
-            playerHealth.TakeDamage(enemyStats.damage + (enemyStats.level * enemyStats.damageBonusPerLevel));
+            playerHealth.TakeDamage(enemyStats.GetDamage());
         }
     }
 }

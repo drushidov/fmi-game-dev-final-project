@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     private GameObject player;
     private PlayerHealth playerHealth;
     private EnemyHealth enemyHealth;
+    private EnemyStats enemyStats;
 
     private void Awake()
     {
@@ -20,18 +21,21 @@ public class EnemyController : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
+        enemyStats = GetComponent<EnemyStats>();
     }
 
     private void OnEnable()
     {
         playerHealth.OnDeath += OnPlayerDeath;
         enemyHealth.OnDeath += OnDeath;
+        enemyStats.OnLevelChanged += OnLevelChanged;
     }
 
     private void OnDisable()
     {
         playerHealth.OnDeath -= OnPlayerDeath;
         enemyHealth.OnDeath -= OnDeath;
+        enemyStats.OnLevelChanged -= OnLevelChanged;
     }
 
     private void OnPlayerDeath()
@@ -43,6 +47,11 @@ public class EnemyController : MonoBehaviour
     private void OnDeath()
     {
         animator.SetBool("dead", true);
+    }
+
+    private void OnLevelChanged(int newLevel)
+    {
+        enemyHealth.SetMaxHealth(enemyHealth.baseMaxHealth + enemyStats.GetHealthBonus());
     }
 
     public bool CanAttack()

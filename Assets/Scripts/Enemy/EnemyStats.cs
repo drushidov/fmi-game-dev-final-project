@@ -1,25 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    public int level;
-    public int baseXpOnKill;
-    public int xpBonusPerLevel;
-    public float healthBonusPerLevel;
-    public float damage;
-    public float damageBonusPerLevel;
+    [SerializeField] private int level;
+    [SerializeField] private int baseXpOnKill;
+    [SerializeField] private int xpBonusPerLevel;
+    [SerializeField] private float healthBonusPerLevel;
+    [SerializeField] private float baseDamage;
+    [SerializeField] private float damageBonusPerLevel;
 
-    // Start is called before the first frame update
-    void Start()
+    public Action<int> OnLevelChanged;
+
+    public void SetLevel(int level)
     {
-        
+        this.level = level;
+
+        OnLevelChanged?.Invoke(level);
     }
 
-    // Update is called once per frame
-    void Update()
+    public int GetXpOnKill()
     {
-        
+        return baseXpOnKill + (level * xpBonusPerLevel);
+    }
+
+    public float GetHealthBonus()
+    {
+        return level * healthBonusPerLevel;
+    }
+
+    public float GetDamage()
+    {
+        return baseDamage + ((level * 1.0f) * damageBonusPerLevel);
     }
 }

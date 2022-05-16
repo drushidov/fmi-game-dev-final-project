@@ -29,7 +29,7 @@ public class EnemyRewards : MonoBehaviour
 
     void RewardPlayerXP()
     {
-        playerXp.Value += enemyStats.level * enemyStats.baseXpOnKill;
+        playerXp.Value += enemyStats.GetXpOnKill();
     }
 
     void DropRewards()

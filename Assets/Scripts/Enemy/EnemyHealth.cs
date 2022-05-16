@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public float maxHealth = 100.0f;
-    private float currentHealth;
+    public float baseMaxHealth = 100.0f;
+    private float maxHealth;
+    [SerializeField] private float currentHealth;
 
     public Action<float, float> OnDamageTaken;
     public Action<float, float> OnHeal;
     public Action OnDeath;
 
-    private void Start()
+    private void Awake()
     {
+        maxHealth = baseMaxHealth;
         currentHealth = maxHealth;
     }
 
@@ -39,9 +41,9 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth += amount;
 
-        if (currentHealth > maxHealth)
+        if (currentHealth > baseMaxHealth)
         {
-            currentHealth = maxHealth;
+            currentHealth = baseMaxHealth;
         }
 
         OnHeal?.Invoke(amount, currentHealth);
@@ -51,11 +53,6 @@ public class EnemyHealth : MonoBehaviour
     {
         maxHealth = newMaxHealth;
         currentHealth = maxHealth;
-    }
-
-    public void SetHealth(float newHealth)
-    {
-        currentHealth = newHealth;
     }
 
     public void Die()
