@@ -13,7 +13,6 @@ public class EnemyMovingTowardsPlayerBehaviour : StateMachineBehaviour
     {
         player = GameObject.FindWithTag("Player");
         agent = animator.gameObject.transform.parent.GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -27,7 +26,6 @@ public class EnemyMovingTowardsPlayerBehaviour : StateMachineBehaviour
         }
 
         agent.SetDestination(player.transform.position);
-        animator.gameObject.transform.LookAt(player.transform);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

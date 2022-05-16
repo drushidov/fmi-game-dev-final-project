@@ -20,7 +20,7 @@ public class EnemyAggressiveIdleBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.gameObject.transform.LookAt(player.transform);
+        animator.gameObject.transform.parent.LookAt(player.transform);
 
         if (Vector3.Distance(animator.gameObject.transform.position, player.transform.position) > agent.stoppingDistance)
         {
