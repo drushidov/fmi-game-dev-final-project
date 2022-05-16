@@ -15,5 +15,5 @@ MonoBehaviour:
   Name: Agility
   Type: 2
   initialValue: 0
-  points: 1
+  points: 0
   valueIncreasePerPoint: 10

@@ -15,5 +15,5 @@ MonoBehaviour:
   Name: Strength
   Type: 0
   initialValue: 0
-  points: 2
+  points: 0
   valueIncreasePerPoint: 50
