@@ -8,25 +8,41 @@ public class PlayerHealth : MonoBehaviour
     public float initialMaxHealth = 100.0f;
     [SerializeField] private float maxHealth;
     [SerializeField] private float currentHealth;
-    private List<PlayerBonus> appliedBonuses;
+    private List<PlayerBonus> appliedBonuses = new List<PlayerBonus>();
 
     public Action<float, float> OnHealthChanged;
     public Action<float> OnMaxHealthChanged;
     public Action OnDeath;
 
-    private void Start()
+    private void Awake()
     {
         maxHealth = initialMaxHealth;
         currentHealth = maxHealth;
-        appliedBonuses = new List<PlayerBonus>();
 
         OnHealthChanged?.Invoke(0f, currentHealth);
         OnMaxHealthChanged?.Invoke(maxHealth);
     }
 
-    public void CalculateMaxHealth(float bonus)
+    public void CalculateMaxHealth()
     {
-        maxHealth = initialMaxHealth + bonus;
+        float bonusHealth = 0f;
+
+        foreach (PlayerBonus bonus in appliedBonuses)
+        {
+            bonusHealth += bonus.InitialValue + ((bonus.Points * 1.0f) * bonus.ValueIncreasePerPoint);
+        }
+
+        float previousMaxHealth = maxHealth;
+
+        maxHealth = initialMaxHealth + bonusHealth;
+
+        if (currentHealth == previousMaxHealth)
+        {
+            // If the player was at max health, set the current health to the max again
+            currentHealth = maxHealth;
+        }
+
+
         OnMaxHealthChanged?.Invoke(maxHealth);
     }
 
@@ -71,15 +87,24 @@ public class PlayerHealth : MonoBehaviour
         OnHealthChanged?.Invoke(previousHealth, currentHealth);
     }
 
-    public void ApplyBonus(PlayerBonus bonus)
+    public void ApplyMaxHealthBonus(PlayerBonus newBonus)
     {
-        if (bonus.Type != PlayerBonusType.Health)
+        if (newBonus.Type != PlayerBonusType.Health)
         {
-            Debug.Log("Wrong bonus applied to player health");
+            Debug.Log("Wrong bonus applied to player max health");
             return;
         }
 
-        appliedBonuses.Add(bonus);
+        if (appliedBonuses.Find((bonus) => bonus.Name == newBonus.Name))
+        {
+            Debug.Log("Applied bonus " + newBonus.Name + " twice");
+            return;
+        }
+
+        appliedBonuses.Add(newBonus);
+        newBonus.OnValuesUpdate += (newValue) => CalculateMaxHealth();
+
+        CalculateMaxHealth();
     }
 
     public void Die()

@@ -41,8 +41,7 @@ public class PlayerStats : MonoBehaviour
             switch (bonus.Type)
             {
                 case PlayerBonusType.Health:
-                    OnHealthBonusUpdate(valueToUpdate);
-                    bonus.OnValuesUpdate += OnHealthBonusUpdate;
+                    playerHealth.ApplyMaxHealthBonus(bonus);
                     break;
                 case PlayerBonusType.Damage:
                     OnDamageBonusUpdate(valueToUpdate);
@@ -59,11 +58,6 @@ public class PlayerStats : MonoBehaviour
     public void OnDamageBonusUpdate(float newDamageBonus)
     {
         damage = baseDamage + newDamageBonus;
-    }
-
-    public void OnHealthBonusUpdate(float newHealthBonus)
-    {
-        playerHealth.CalculateMaxHealth(newHealthBonus);
     }
 
     public void OnSpeedBonusUpdate(float newSpeedBonus)
