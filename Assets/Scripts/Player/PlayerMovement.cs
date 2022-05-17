@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInputActions playerInputActions;
 
     private Coroutine moveCoroutine;
+    private float clickHoldTime;
+    private float clickHoldDelay = 0.1f;
 
     public bool canMove = true;
 
@@ -47,13 +49,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMoveStarted(InputAction.CallbackContext context)
     {
+        clickHoldTime = 0f;
         moveCoroutine = StartCoroutine(Move());
     }
 
     private void OnMoveCanceled(InputAction.CallbackContext context)
     {
-        StopCoroutine(moveCoroutine);
-        agent.ResetPath();
+        if (moveCoroutine != null)
+        {
+            StopCoroutine(moveCoroutine);
+        }
+
+        if (clickHoldTime >= clickHoldDelay)
+        {
+            agent.ResetPath();
+        }
     }
 
     public void StopPlayerMovement()
@@ -83,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
                 agent.SetDestination(hit.point);
             }
 
+            clickHoldTime += Time.deltaTime;
             yield return null;
         }
     }
