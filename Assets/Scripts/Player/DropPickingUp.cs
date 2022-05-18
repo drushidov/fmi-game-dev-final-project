@@ -20,7 +20,9 @@ public class DropPickingUp : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Pickup"))
         {
-            Debug.Log("Picked up a pickup");
+            PickupController pickupController = other.gameObject.GetComponent<PickupController>();
+            pickupController.pickup.Use();
+
             Destroy(other.gameObject);
         }
     }
