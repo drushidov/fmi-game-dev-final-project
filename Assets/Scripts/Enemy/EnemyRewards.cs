@@ -8,11 +8,13 @@ public class EnemyRewards : MonoBehaviour
 
     private EnemyHealth enemyHealth;
     private EnemyStats enemyStats;
+    private EnemyDrops enemyDrops;
 
     void Awake()
     {
         enemyHealth = GetComponent<EnemyHealth>();
         enemyStats = GetComponent<EnemyStats>();
+        enemyDrops = GetComponent<EnemyDrops>();
     }
 
     private void OnEnable()
@@ -34,6 +36,6 @@ public class EnemyRewards : MonoBehaviour
 
     void DropRewards()
     {
-        Debug.Log("Dropping rewards");
+        enemyDrops.RollDropTable();
     }
 }
