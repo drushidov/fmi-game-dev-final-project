@@ -69,8 +69,6 @@ public class PlayerHealth : MonoBehaviour
         }
 
         OnHealthChanged?.Invoke(previousHealth, currentHealth);
-
-        Debug.Log("Player took " + damage + " damage");
     }
 
     public void Heal(float amount)

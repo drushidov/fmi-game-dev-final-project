@@ -2638,7 +2638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 95838078, guid: 22aaeefce85bce643b7b874d5875fe70, type: 3}
       propertyPath: dropTableChances.Array.data[0]
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 95838078, guid: 22aaeefce85bce643b7b874d5875fe70, type: 3}
       propertyPath: dropTableChances.Array.data[1]

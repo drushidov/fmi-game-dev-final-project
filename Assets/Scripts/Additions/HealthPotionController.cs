@@ -6,9 +6,10 @@ public class HealthPotionController : PickupController
 {
     public float healPercentage;
 
-    protected override void OnPickupUsed()
+    public override void UsePickup()
     {
         PlayerHealth playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
         playerHealth.Heal(playerHealth.GetMaxHealth() * (healPercentage / 100.0f));
+        pickup.HandleUse();
     }
 }

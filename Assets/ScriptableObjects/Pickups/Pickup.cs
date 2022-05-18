@@ -10,7 +10,7 @@ public class Pickup : ScriptableObject
 
     public Action OnUse;
 
-    public void Use()
+    public void HandleUse()
     {
         OnUse?.Invoke();
     }
