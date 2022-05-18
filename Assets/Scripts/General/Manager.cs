@@ -8,20 +8,13 @@ public class Manager : MonoBehaviour
 {
     public SceneAsset arenaScene;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void LoadArenaScene()
     {
         SceneManager.LoadScene(arenaScene.name);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
