@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         playerMovement.enabled = false;
         agent.enabled = false;
+        GetComponent<Collider>().enabled = false;
         animator.SetTrigger("die");
     }
 }

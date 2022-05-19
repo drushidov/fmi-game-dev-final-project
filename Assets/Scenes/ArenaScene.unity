@@ -539,8 +539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54eff4974f6b0e48a5825b20ab67d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arenaScene: {fileID: 0}
-  mainMenuScene: {fileID: 0}
+  arenaScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+  mainMenuScene: {fileID: 102900000, guid: bcf3c31c749d2d54f80e191dc01730e3, type: 3}
 --- !u!4 &98449857
 Transform:
   m_ObjectHideFlags: 0
@@ -6584,7 +6584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1987484176}
   gameOverPanel: {fileID: 1428139238}
-  delayBeforeGameOverShow: 2
+  delayBeforeGameOverShow: 2.5
   waveManager: {fileID: 1081822914}
   waveReachedText: {fileID: 1751340958}
 --- !u!1001 &1855904488
