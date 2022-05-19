@@ -4,24 +4,15 @@ using UnityEngine;
 
 public class EnemyAnimationEvents : MonoBehaviour
 {
-    private GameObject player;
-    private EnemyController enemyController;
-    private EnemyStats enemyStats;
+    private EnemyAttack enemyAttack;
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
-        enemyController = transform.parent.GetComponent<EnemyController>();
-        enemyStats = transform.parent.GetComponent<EnemyStats>();
+        enemyAttack = transform.parent.GetComponent<EnemyAttack>();
     }
     
-    public void DamagePlayer()
+    public void TriggerAttack()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) <= enemyController.maxAttackDistance)
-        {
-            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
-
-            playerHealth.TakeDamage(enemyStats.GetDamage());
-        }
+        enemyAttack.Attack();
     }
 }

@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 1527475360}
   - component: {fileID: 3640419237467274871}
   - component: {fileID: 95838078}
+  - component: {fileID: 3385316870585999039}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -213,6 +214,18 @@ MonoBehaviour:
   - {fileID: 9181013635550720495, guid: ab78d7b1762beb2459a6f0010e130483, type: 3}
   dropTableChances:
   - 100
+--- !u!114 &3385316870585999039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994631236668177033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c229a669c8f0e6144bf6154eafae7a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8471406522659791278
 GameObject:
   m_ObjectHideFlags: 0
