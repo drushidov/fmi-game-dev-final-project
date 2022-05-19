@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 755898327}
   - component: {fileID: 8777658758125485765}
   - component: {fileID: 1029248970202891258}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ThrowingDagger
-  m_TagString: Untagged
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
