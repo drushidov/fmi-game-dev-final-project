@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Manager : MonoBehaviour
+public class MainMenuManager : MonoBehaviour
 {
     public SceneAsset arenaScene;
 

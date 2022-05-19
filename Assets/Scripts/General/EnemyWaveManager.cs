@@ -25,12 +25,14 @@ public class EnemyWaveManager : MonoBehaviour
         }
 
         previousWaveEnemies = new List<GameObject>();
-        wave = 1;
+        wave = 0;
         Invoke("SpawnWave", delayBeforeFirstWave);
     }
 
     void SpawnWave()
     {
+        wave++;
+
         // Pick enemy variant
         int enemyVariant = Random.Range(0, enemyVariants.Length);
 
@@ -75,7 +77,6 @@ public class EnemyWaveManager : MonoBehaviour
         }
 
         remainingEnemies = enemiesPerWave;
-        wave++;
     }
 
     void OnEnemyDeath()
@@ -104,5 +105,10 @@ public class EnemyWaveManager : MonoBehaviour
         }
 
         previousWaveEnemies.Clear();
+    }
+
+    public int GetWave()
+    {
+        return wave;
     }
 }
