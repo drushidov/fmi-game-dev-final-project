@@ -195,7 +195,7 @@ MonoBehaviour:
   baseXpOnKill: 5
   xpBonusPerLevel: 5
   healthBonusPerLevel: 5
-  baseDamage: 10
+  baseDamage: 100
   damageBonusPerLevel: 5
 --- !u!114 &95838078
 MonoBehaviour:
