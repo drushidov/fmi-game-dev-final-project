@@ -15,5 +15,5 @@ MonoBehaviour:
   Name: Vitality
   Type: 1
   initialValue: 0
-  points: 0
+  points: 1
   valueIncreasePerPoint: 50
