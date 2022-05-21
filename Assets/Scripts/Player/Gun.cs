@@ -6,6 +6,7 @@ public class Gun : Weapon
 {
     public Transform bulletSpawnPosition;
     public GameObject bulletPrefab;
+    public GameObject muzzleFlash;
     private PlayerStats playerStats;
 
     private void Awake()
@@ -13,8 +14,16 @@ public class Gun : Weapon
         playerStats = GetComponent<PlayerStats>();
     }
 
+    private void HideMuzzleFlash()
+    {
+        muzzleFlash.SetActive(false);
+    }
+
     public override void Use()
     {
+        muzzleFlash.SetActive(true);
+        Invoke("HideMuzzleFlash", 0.1f);
+
         Quaternion bulletRotation = bulletSpawnPosition.transform.rotation;
         bulletRotation.x = 0;
         bulletRotation.z = 0;
