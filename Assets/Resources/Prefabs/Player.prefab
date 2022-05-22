@@ -1,5 +1,86 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &845299999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 845300003}
+  - component: {fileID: 845300002}
+  - component: {fileID: 845300001}
+  m_Layer: 6
+  m_Name: MuzzleFlashPlane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &845300003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845299999}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 0.0028, y: -0, z: 0.0517}
+  m_LocalScale: {x: 0.01126773, y: 0.1, z: 0.005961589}
+  m_Children: []
+  m_Father: {fileID: 1130682637}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 180}
+--- !u!33 &845300002
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845299999}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &845300001
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845299999}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 4788abea8022de74dbb0a1b77fff35ad, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1130682636
 GameObject:
   m_ObjectHideFlags: 0
@@ -26,7 +107,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.06780094, y: 0.00019506217, z: 0.005798967}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 845300003}
   m_Father: {fileID: 6819891287751532394}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -65,6 +147,8 @@ GameObject:
   - component: {fileID: 1987484184}
   - component: {fileID: 4661093971339602328}
   - component: {fileID: 1987484185}
+  - component: {fileID: 7604944430302598946}
+  - component: {fileID: 1987484189}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -152,7 +236,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -271,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawnPosition: {fileID: 1130682637}
   bulletPrefab: {fileID: 7077722342276495963, guid: b98b1e3ebd727234b8184b788ca5a971, type: 3}
-  muzzleFlash: {fileID: 0}
+  muzzleFlash: {fileID: 845299999}
 --- !u!114 &1987484179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +453,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73eeb651b46d3248be33015f9d9c3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7604944430302598946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7170726911687733847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f0e3856ccc7514098bd7cfe5a33d00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlesOrigin: {fileID: 1086707115246342678}
+  healParticles: {fileID: 7160746337447288826, guid: b2fc769c7a8f53147857110e997f62dc, type: 3}
+  healthPotionPickup: {fileID: 11400000, guid: 9400c19371585d04d8d8670750f50326, type: 2}
+--- !u!114 &1987484189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7170726911687733847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332a169e0f62f1c4eac0f3ee75c4a97e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunshotAudioClip: {fileID: 8300000, guid: 36227ebdd48c2634d9777b984e62e328, type: 3}
 --- !u!1 &7709353872139272491
 GameObject:
   m_ObjectHideFlags: 0
