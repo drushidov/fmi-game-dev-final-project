@@ -3150,7 +3150,6 @@ GameObject:
   m_Component:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
-  - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
@@ -3159,14 +3158,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &963194226
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -7267,6 +7258,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a0012ccf359724dbf629485368d33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1987484189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987484173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 332a169e0f62f1c4eac0f3ee75c4a97e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunshotAudioClip: {fileID: 8300000, guid: 36227ebdd48c2634d9777b984e62e328, type: 3}
 --- !u!1 &2002988846
 GameObject:
   m_ObjectHideFlags: 0
@@ -7790,7 +7794,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: a3afd158f800a974598a693fe4e958ae, type: 3}
 --- !u!1001 &5685270619435209276
 PrefabInstance:

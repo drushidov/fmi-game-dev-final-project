@@ -21,6 +21,7 @@ public class Gun : Weapon
 
     public override void Use()
     {
+        OnUse?.Invoke();
         muzzleFlash.SetActive(true);
         Invoke("HideMuzzleFlash", 0.1f);
 
