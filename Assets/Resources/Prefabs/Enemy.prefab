@@ -215,7 +215,7 @@ MonoBehaviour:
   dropTable:
   - {fileID: 9181013635550720495, guid: ab78d7b1762beb2459a6f0010e130483, type: 3}
   dropTableChances:
-  - 100
+  - 5
 --- !u!114 &3385316870585999039
 MonoBehaviour:
   m_ObjectHideFlags: 0
