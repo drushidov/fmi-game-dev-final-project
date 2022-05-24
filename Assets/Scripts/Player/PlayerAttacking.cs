@@ -9,6 +9,7 @@ public class PlayerAttacking : MonoBehaviour
     private PlayerInputActions playerInputActions;
     private NavMeshAgent agent;
     private Animator animator;
+    private Camera mainCamera;
     private float attackCameraAngleCorrection = -40.0f;
 
     public bool canAttack = true;
@@ -18,6 +19,7 @@ public class PlayerAttacking : MonoBehaviour
         playerInputActions = new PlayerInputActions();
         animator = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        mainCamera = Camera.main;
     }
 
     private void OnEnable()
@@ -39,7 +41,25 @@ public class PlayerAttacking : MonoBehaviour
             return;
         }
 
-        // Look at mouse position
+        LookAtAttackPoint();
+
+        // Play attack animation
+        animator.SetTrigger("attack");
+    }
+
+    void LookAtAttackPoint()
+    {
+        // Look at point of contact, if available
+        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 1000.0f, LayerMask.GetMask("ClickToMove", "Enemy", "Environment")))
+        {
+            transform.LookAt(hit.point);
+            return;
+        }
+
+        // If nothing is hit by the ray, do a calculation for the look rotation
         Vector3 mousePos = Mouse.current.position.ReadValue();
         mousePos.z = Vector3.Distance(transform.position, Camera.main.transform.position);
 
@@ -47,9 +67,6 @@ public class PlayerAttacking : MonoBehaviour
 
         float angle = AngleBetweenPoints(mousePos, playerPos);
         transform.rotation = Quaternion.Euler(new Vector3(0, -angle + attackCameraAngleCorrection, 0));
-
-        // Play attack animation
-        animator.SetTrigger("attack");
     }
 
     float AngleBetweenPoints(Vector2 a, Vector2 b)
