@@ -4,23 +4,38 @@ using UnityEngine;
 
 public class EnemyPlayerDetector : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private EnemyHealth enemyHealth;
+
+    void Awake()
     {
-        
+        enemyHealth = transform.parent.GetComponent<EnemyHealth>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayerDetected()
     {
-        
+        transform.parent.GetComponentInChildren<Animator>().SetBool("playerDetected", true);
+    }
+
+    private void OnEnable()
+    {
+        enemyHealth.OnDamageTaken += OnDamageTaken;
+    }
+
+    private void OnDisable()
+    {
+        enemyHealth.OnDamageTaken -= OnDamageTaken;
+    }
+
+    void OnDamageTaken(float damage, float currentHealth)
+    {
+        PlayerDetected();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            transform.parent.GetComponentInChildren<Animator>().SetBool("playerDetected", true);
+            PlayerDetected();
         }
     }
 }
