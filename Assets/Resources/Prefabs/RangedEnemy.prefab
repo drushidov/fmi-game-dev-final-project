@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 3640419237467274871}
   - component: {fileID: 95838078}
   - component: {fileID: 7871002114755781981}
+  - component: {fileID: 7237044411941454498}
   m_Layer: 8
   m_Name: RangedEnemy
   m_TagString: Enemy
@@ -130,6 +131,7 @@ Transform:
   - {fileID: 1439993659960711811}
   - {fileID: 1692946675}
   - {fileID: 530812204}
+  - {fileID: 8580431890822406719}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -259,6 +261,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 6219933914072794975, guid: d3284f1d6adaff743adf2206539c72a0, type: 3}
   projectileSpawn: {fileID: 530812204}
+--- !u!114 &7237044411941454498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994631236668177033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29bc209c7f55b745ac78ffc6ed615d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectsOrigin: {fileID: 8580431890822406719}
+  hurtParticles: {fileID: 7711491278919998475, guid: ad165e685541ae24a90bf2a4c3003e1c, type: 3}
+--- !u!1 &2563573867847183766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8580431890822406719}
+  m_Layer: 8
+  m_Name: EffectsOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8580431890822406719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2563573867847183766}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.36, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 994631236668177032}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8471406522659791278
 GameObject:
   m_ObjectHideFlags: 0
