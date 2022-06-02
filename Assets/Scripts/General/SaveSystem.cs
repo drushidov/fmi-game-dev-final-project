@@ -8,7 +8,7 @@ public static class SaveSystem
 {
     private static string saveFileName = "playerData.dat";
 
-    public static void SavePlayerData(GameObject player)
+    public static PlayerData SavePlayerData(GameObject player, int bestWaveCount)
     {
         string filePath = Application.persistentDataPath + "/" + saveFileName;
         FileStream fileStream = new FileStream(filePath, FileMode.Create);
@@ -39,8 +39,12 @@ public static class SaveSystem
             playerData.bonuses.Add(playerBonusData);
         }
 
+        playerData.bestWaveCount = bestWaveCount;
+
         binaryFormatter.Serialize(fileStream, playerData);
         fileStream.Close();
+
+        return playerData;
     }
 
     public static PlayerData LoadPlayerData()

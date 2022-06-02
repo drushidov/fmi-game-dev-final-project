@@ -12,6 +12,7 @@ public class EnemyWaveManager : MonoBehaviour
 
     private int spawnPointsCount;
     private int wave;
+    private int bestWaveCount;
     private int remainingEnemies;
     private List<GameObject> previousWaveEnemies;
 
@@ -32,6 +33,11 @@ public class EnemyWaveManager : MonoBehaviour
     void SpawnWave()
     {
         wave++;
+
+        if (wave > bestWaveCount)
+        {
+            bestWaveCount = wave;
+        }
 
         // Pick enemy variant
         int enemyVariant = Random.Range(0, enemyVariants.Length);
@@ -110,5 +116,15 @@ public class EnemyWaveManager : MonoBehaviour
     public int GetWave()
     {
         return wave;
+    }
+
+    public int GetBestWaveCount()
+    {
+        return bestWaveCount;
+    }
+
+    public void SetBestWaveCount(int count)
+    {
+        bestWaveCount = count;
     }
 }

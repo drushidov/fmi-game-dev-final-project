@@ -8,4 +8,5 @@ public class PlayerData
     public int nextLevelXp;
     public int availableSkillPoints;
     public List<PlayerBonusData> bonuses;
+    public int bestWaveCount;
 }
