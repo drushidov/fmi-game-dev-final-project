@@ -28,7 +28,9 @@ public class EnemyDrops : MonoBehaviour
             
             if (dropIntervalEnd >= result)
             {
-                Instantiate(dropTable[i], dropPosition.position, Quaternion.identity);
+                Quaternion spawnRotation = dropTable[i].transform.rotation;
+                spawnRotation.y += Random.Range(0f, 360f);
+                Instantiate(dropTable[i], dropPosition.position, spawnRotation);
                 break;
             }
         }

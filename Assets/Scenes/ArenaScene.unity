@@ -520,6 +520,7 @@ GameObject:
   m_Component:
   - component: {fileID: 98449857}
   - component: {fileID: 98449856}
+  - component: {fileID: 98449858}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -555,6 +556,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &98449858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98449855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c863258518d1429429fc52bfbb9c7a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveManager: {fileID: 1081822914}
 --- !u!1 &109699592
 GameObject:
   m_ObjectHideFlags: 0
@@ -7587,10 +7601,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3015300576757939660, guid: a3afd158f800a974598a693fe4e958ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4661093971339602328, guid: a3afd158f800a974598a693fe4e958ae, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7170726911687733847, guid: a3afd158f800a974598a693fe4e958ae, type: 3}
