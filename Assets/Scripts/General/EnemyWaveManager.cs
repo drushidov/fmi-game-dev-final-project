@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EnemyWaveManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class EnemyWaveManager : MonoBehaviour
     public int enemiesPerWave;
     public float delayBeforeFirstWave;
     public float delayBetweenWaves;
+
+    public TextMeshProUGUI waveText;
 
     private int spawnPointsCount;
     private int wave;
@@ -27,6 +30,7 @@ public class EnemyWaveManager : MonoBehaviour
 
         previousWaveEnemies = new List<GameObject>();
         wave = 0;
+        Invoke("ShowNextWaveMessage", delayBeforeFirstWave / 2.0f);
         Invoke("SpawnWave", delayBeforeFirstWave);
     }
 
@@ -83,6 +87,8 @@ public class EnemyWaveManager : MonoBehaviour
         }
 
         remainingEnemies = enemiesPerWave;
+
+        HideWaveMessages();
     }
 
     void OnEnemyDeath()
@@ -91,9 +97,7 @@ public class EnemyWaveManager : MonoBehaviour
 
         if (remainingEnemies == 0)
         {
-            Debug.Log("Enemies cleared");
-
-            // Show enemies cleared UI
+            StartCoroutine(ShowWaveMessages());
 
             Invoke("ClearPreviousWaveEnemies", delayBetweenWaves / 2.0f);
             Invoke("SpawnWave", delayBetweenWaves);
@@ -126,5 +130,26 @@ public class EnemyWaveManager : MonoBehaviour
     public void SetBestWaveCount(int count)
     {
         bestWaveCount = count;
+    }
+
+    private void ShowNextWaveMessage()
+    {
+        waveText.text = "Wave " + (wave + 1);
+        waveText.gameObject.SetActive(true);
+    }
+
+    IEnumerator ShowWaveMessages()
+    {
+        waveText.text = "Wave " + wave + " cleared";
+        waveText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(delayBetweenWaves / 2.0f);
+
+        ShowNextWaveMessage();
+    }
+
+    private void HideWaveMessages()
+    {
+        waveText.gameObject.SetActive(false);
     }
 }
