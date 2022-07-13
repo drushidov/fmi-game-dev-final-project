@@ -10,6 +10,7 @@ public class EnemyWaveManager : MonoBehaviour
     public int enemiesPerWave;
     public float delayBeforeFirstWave;
     public float delayBetweenWaves;
+    public bool hasImprovedBestWaveCount;
 
     public TextMeshProUGUI waveText;
 
@@ -30,6 +31,7 @@ public class EnemyWaveManager : MonoBehaviour
 
         previousWaveEnemies = new List<GameObject>();
         wave = 0;
+        hasImprovedBestWaveCount = false;
         Invoke("ShowNextWaveMessage", delayBeforeFirstWave / 2.0f);
         Invoke("SpawnWave", delayBeforeFirstWave);
     }
@@ -41,6 +43,7 @@ public class EnemyWaveManager : MonoBehaviour
         if (wave > bestWaveCount)
         {
             bestWaveCount = wave;
+            hasImprovedBestWaveCount = true;
         }
 
         // Pick enemy variant

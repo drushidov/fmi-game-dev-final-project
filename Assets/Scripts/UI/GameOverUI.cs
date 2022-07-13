@@ -8,6 +8,7 @@ public class GameOverUI : MonoBehaviour
     public float delayBeforeGameOverShow;
     public EnemyWaveManager waveManager;
     public TextMeshProUGUI waveReachedText;
+    public TextMeshProUGUI newPersonalBestText;
 
     private void OnEnable()
     {
@@ -32,6 +33,13 @@ public class GameOverUI : MonoBehaviour
     void ShowGameOverPanel()
     {
         waveReachedText.text = "You reached wave " + waveManager.GetWave();
+
+        newPersonalBestText.gameObject.SetActive(false);
+        if (waveManager.hasImprovedBestWaveCount)
+        {
+            newPersonalBestText.gameObject.SetActive(true);
+        }
+
         gameOverPanel.SetActive(true);
     }
 }
