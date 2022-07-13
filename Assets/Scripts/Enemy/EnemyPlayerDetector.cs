@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyPlayerDetector : MonoBehaviour
 {
     private EnemyHealth enemyHealth;
+    private float nearbyEnemiesAlertRadius = 7.0f;
 
     void Awake()
     {
@@ -14,6 +15,21 @@ public class EnemyPlayerDetector : MonoBehaviour
     public void PlayerDetected()
     {
         transform.parent.GetComponentInChildren<Animator>().SetBool("playerDetected", true);
+    }
+
+    public void AlertNearbyEnemiesForPlayer()
+    {
+        Collider[] enemyColliders = Physics.OverlapSphere(transform.position, nearbyEnemiesAlertRadius, LayerMask.GetMask("Enemy"));
+
+        foreach (var enemyCollider in enemyColliders)
+        {
+            EnemyPlayerDetector enemyPlayerDetector = enemyCollider.gameObject.GetComponentInChildren<EnemyPlayerDetector>();
+
+            if (enemyPlayerDetector != null)
+            {
+                enemyPlayerDetector.PlayerDetected();
+            }
+        }
     }
 
     private void OnEnable()
@@ -29,6 +45,7 @@ public class EnemyPlayerDetector : MonoBehaviour
     void OnDamageTaken(float damage, float currentHealth)
     {
         PlayerDetected();
+        AlertNearbyEnemiesForPlayer();
     }
 
     private void OnTriggerEnter(Collider other)
