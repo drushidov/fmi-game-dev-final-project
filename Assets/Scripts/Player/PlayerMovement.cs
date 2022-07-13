@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -49,6 +50,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMoveStarted(InputAction.CallbackContext context)
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         clickHoldTime = 0f;
         moveCoroutine = StartCoroutine(Move());
     }

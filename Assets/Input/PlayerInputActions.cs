@@ -33,6 +33,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""PauseMenuTrigger"",
+                    ""type"": ""Button"",
+                    ""id"": ""bb9b2180-726f-4bf8-a383-b88ad38a2ced"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -57,6 +65,17 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b5c37a5-40a1-4dc1-9d87-0a9b2e0f446f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMenuTrigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -67,6 +86,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_ClickToMove = m_Player.FindAction("ClickToMove", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+        m_Player_PauseMenuTrigger = m_Player.FindAction("PauseMenuTrigger", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -118,12 +138,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_ClickToMove;
     private readonly InputAction m_Player_Attack;
+    private readonly InputAction m_Player_PauseMenuTrigger;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @ClickToMove => m_Wrapper.m_Player_ClickToMove;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
+        public InputAction @PauseMenuTrigger => m_Wrapper.m_Player_PauseMenuTrigger;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -139,6 +161,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
+                @PauseMenuTrigger.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenuTrigger;
+                @PauseMenuTrigger.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenuTrigger;
+                @PauseMenuTrigger.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenuTrigger;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -149,6 +174,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @PauseMenuTrigger.started += instance.OnPauseMenuTrigger;
+                @PauseMenuTrigger.performed += instance.OnPauseMenuTrigger;
+                @PauseMenuTrigger.canceled += instance.OnPauseMenuTrigger;
             }
         }
     }
@@ -157,5 +185,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     {
         void OnClickToMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnPauseMenuTrigger(InputAction.CallbackContext context);
     }
 }
