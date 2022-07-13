@@ -764,7 +764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Titan Arena
+  m_text: Battle Arena
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ff65be574ef97840aa43318bc89f1c6, type: 2}
   m_sharedMaterial: {fileID: 6190821307986208628, guid: 1ff65be574ef97840aa43318bc89f1c6, type: 2}
