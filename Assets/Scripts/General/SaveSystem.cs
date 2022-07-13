@@ -66,4 +66,14 @@ public static class SaveSystem
             return null;
         }
     }
+
+    public static void ClearPlayerData()
+    {
+        string filePath = Application.persistentDataPath + "/" + saveFileName;
+
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+    }
 }
