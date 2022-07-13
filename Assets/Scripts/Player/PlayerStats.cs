@@ -22,6 +22,22 @@ public class PlayerStats : MonoBehaviour
         ProcessBonuses();
     }
 
+    private void OnDisable()
+    {
+        foreach (PlayerBonus bonus in playerBonuses)
+        {
+            switch (bonus.Type)
+            {
+                case PlayerBonusType.Damage:
+                    bonus.OnValuesUpdate -= OnDamageBonusUpdate;
+                    break;
+                case PlayerBonusType.Speed:
+                    bonus.OnValuesUpdate -= OnSpeedBonusUpdate;
+                    break;
+            }
+        }
+    }
+
     public float GetDamage()
     {
         return damage;

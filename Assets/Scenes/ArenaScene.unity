@@ -570,6 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveManager: {fileID: 1081822914}
+  player: {fileID: 1987484173}
 --- !u!1 &109699592
 GameObject:
   m_ObjectHideFlags: 0
@@ -4059,7 +4060,7 @@ MonoBehaviour:
   - {fileID: 994631236668177033, guid: 22aaeefce85bce643b7b874d5875fe70, type: 3}
   - {fileID: 994631236668177033, guid: 9b20d0b24ea59a244b44cf746e37c346, type: 3}
   enemiesPerWave: 8
-  delayBeforeFirstWave: 8
+  delayBeforeFirstWave: 2
   delayBetweenWaves: 8
   hasImprovedBestWaveCount: 0
   waveText: {fileID: 298157327}

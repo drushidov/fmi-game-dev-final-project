@@ -5,14 +5,13 @@ using UnityEngine;
 public class GameDataSaving : MonoBehaviour
 {
     public EnemyWaveManager waveManager;
+    public GameObject player;
 
-    private GameObject player;
     private PlayerHealth playerHealth;
     private PlayerData lastSavedData;
 
     private void Awake()
     {
-        player = GameObject.FindWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
 
         lastSavedData = SaveSystem.LoadPlayerData();

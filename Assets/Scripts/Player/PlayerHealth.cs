@@ -23,6 +23,14 @@ public class PlayerHealth : MonoBehaviour
         OnMaxHealthChanged?.Invoke(maxHealth);
     }
 
+    private void OnDisable()
+    {
+        foreach (PlayerBonus bonus in appliedBonuses)
+        {
+            bonus.OnValuesUpdate -= OnBonusValuesUpdate;
+        }
+    }
+
     public void CalculateMaxHealth()
     {
         float bonusHealth = 0f;
@@ -100,8 +108,13 @@ public class PlayerHealth : MonoBehaviour
         }
 
         appliedBonuses.Add(newBonus);
-        newBonus.OnValuesUpdate += (newValue) => CalculateMaxHealth();
+        newBonus.OnValuesUpdate += OnBonusValuesUpdate;
 
+        CalculateMaxHealth();
+    }
+
+    private void OnBonusValuesUpdate(float newValue)
+    {
         CalculateMaxHealth();
     }
 
