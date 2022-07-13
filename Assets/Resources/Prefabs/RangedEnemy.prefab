@@ -225,8 +225,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  baseXpOnKill: 5
-  xpBonusPerLevel: 5
+  baseXpOnKill: 10
+  xpBonusPerLevel: 10
   healthBonusPerLevel: 5
   baseDamage: 10
   damageBonusPerLevel: 5
