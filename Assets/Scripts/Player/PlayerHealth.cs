@@ -121,5 +121,6 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         OnDeath?.Invoke();
+        OnDeath = null;
     }
 }

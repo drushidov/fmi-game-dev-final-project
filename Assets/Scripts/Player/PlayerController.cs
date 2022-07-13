@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     void OnPlayerDeath()
     {
+        playerMovement.StopPlayerMovement();
         playerMovement.enabled = false;
         agent.enabled = false;
         GetComponent<Collider>().enabled = false;

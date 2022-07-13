@@ -228,8 +228,8 @@ MonoBehaviour:
   baseXpOnKill: 10
   xpBonusPerLevel: 10
   healthBonusPerLevel: 5
-  baseDamage: 100
-  damageBonusPerLevel: 5
+  baseDamage: 7
+  damageBonusPerLevel: 3
 --- !u!114 &95838078
 MonoBehaviour:
   m_ObjectHideFlags: 0
