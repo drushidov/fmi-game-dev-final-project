@@ -21,7 +21,7 @@ public class PlayerSkillsUpgradeUI : MonoBehaviour
     {
         playerBonuses = GameObject.FindWithTag("Player").GetComponent<PlayerStats>().GetBonuses();
 
-        Transform skillUpgradesParent = playerSkillsMenu.transform.GetChild(1);
+        Transform skillUpgradesParent = playerSkillsMenu.transform.GetChild(0).GetChild(1);
         GameObject newSkillUpgradeUI;
 
         foreach (PlayerBonus bonus in playerBonuses)
@@ -74,7 +74,7 @@ public class PlayerSkillsUpgradeUI : MonoBehaviour
         }
 
         int currentAvailablePoints = availableSkillPoints.Value;
-        Transform skillUpgradesParent = playerSkillsMenu.transform.GetChild(1);
+        Transform skillUpgradesParent = playerSkillsMenu.transform.GetChild(0).GetChild(1);
 
         if (currentAvailablePoints == 0)
         {
