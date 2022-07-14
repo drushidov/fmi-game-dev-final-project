@@ -2116,8 +2116,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLevel: {fileID: 11400000, guid: e60489b8b323b3c49bb0d2b341445932, type: 2}
   availableSkillPoints: {fileID: 11400000, guid: 1924c622ab57ff8438df7be8ea077f94, type: 2}
-  playerLevelUpUI: {fileID: 1145859894}
+  playerSkillsMenu: {fileID: 1145859894}
   skillUpgradeUI: {fileID: 7443249272678120930, guid: 08b7451f7e5c6b44387c2da979b7b047, type: 3}
+  availableSkillPointsText: {fileID: 1335252492}
 --- !u!1001 &529056855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4237,7 +4238,7 @@ GameObject:
   - component: {fileID: 1145859897}
   - component: {fileID: 1145859896}
   m_Layer: 5
-  m_Name: PlayerLevelUp
+  m_Name: PlayerSkillsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4963,7 +4964,7 @@ GameObject:
   - component: {fileID: 1335252493}
   - component: {fileID: 1335252492}
   m_Layer: 5
-  m_Name: LevelUpText
+  m_Name: AvailableSkillPointsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -41,6 +41,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SkillsMenuTrigger"",
+                    ""type"": ""Button"",
+                    ""id"": ""3394f720-08a0-4144-857d-aeada296e7da"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -76,6 +84,17 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""PauseMenuTrigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37b2d806-a918-4929-a428-dabbab8ec895"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SkillsMenuTrigger"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -87,6 +106,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_Player_ClickToMove = m_Player.FindAction("ClickToMove", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_PauseMenuTrigger = m_Player.FindAction("PauseMenuTrigger", throwIfNotFound: true);
+        m_Player_SkillsMenuTrigger = m_Player.FindAction("SkillsMenuTrigger", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -139,6 +159,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_ClickToMove;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_PauseMenuTrigger;
+    private readonly InputAction m_Player_SkillsMenuTrigger;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -146,6 +167,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @ClickToMove => m_Wrapper.m_Player_ClickToMove;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @PauseMenuTrigger => m_Wrapper.m_Player_PauseMenuTrigger;
+        public InputAction @SkillsMenuTrigger => m_Wrapper.m_Player_SkillsMenuTrigger;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -164,6 +186,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @PauseMenuTrigger.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenuTrigger;
                 @PauseMenuTrigger.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenuTrigger;
                 @PauseMenuTrigger.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseMenuTrigger;
+                @SkillsMenuTrigger.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkillsMenuTrigger;
+                @SkillsMenuTrigger.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkillsMenuTrigger;
+                @SkillsMenuTrigger.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkillsMenuTrigger;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -177,6 +202,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @PauseMenuTrigger.started += instance.OnPauseMenuTrigger;
                 @PauseMenuTrigger.performed += instance.OnPauseMenuTrigger;
                 @PauseMenuTrigger.canceled += instance.OnPauseMenuTrigger;
+                @SkillsMenuTrigger.started += instance.OnSkillsMenuTrigger;
+                @SkillsMenuTrigger.performed += instance.OnSkillsMenuTrigger;
+                @SkillsMenuTrigger.canceled += instance.OnSkillsMenuTrigger;
             }
         }
     }
@@ -186,5 +214,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnClickToMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnPauseMenuTrigger(InputAction.CallbackContext context);
+        void OnSkillsMenuTrigger(InputAction.CallbackContext context);
     }
 }
