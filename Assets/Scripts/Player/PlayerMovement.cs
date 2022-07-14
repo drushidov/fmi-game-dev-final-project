@@ -83,8 +83,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void ResumePlayerMovement()
     {
-        agent.isStopped = false;
         canMove = true;
+
+        if (agent != null && agent.enabled)
+        {
+            agent.isStopped = false;
+        }
     }
 
     IEnumerator Move()
