@@ -141,4 +141,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickup: {fileID: 11400000, guid: 9400c19371585d04d8d8670750f50326, type: 2}
-  healPercentage: 30
+  healPercentage: 20

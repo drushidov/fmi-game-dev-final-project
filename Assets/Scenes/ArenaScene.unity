@@ -3533,8 +3533,8 @@ GameObject:
   m_Component:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
-  - component: {fileID: 963194229}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
@@ -4151,7 +4151,7 @@ MonoBehaviour:
   - {fileID: 994631236668177033, guid: 22aaeefce85bce643b7b874d5875fe70, type: 3}
   - {fileID: 994631236668177033, guid: 9b20d0b24ea59a244b44cf746e37c346, type: 3}
   enemiesPerWave: 8
-  delayBeforeFirstWave: 2
+  delayBeforeFirstWave: 8
   delayBetweenWaves: 8
   hasImprovedBestWaveCount: 0
   waveText: {fileID: 298157327}
