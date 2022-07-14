@@ -15,6 +15,7 @@ public class PlayerEffects : MonoBehaviour
     {
         playerHealth = GetComponent<PlayerHealth>();
         playerHitTintEffect = Camera.main.GetComponent<PlayerHitEffect>();
+        playerHitTintEffect.playerHitMaterial.SetFloat("_TintStrength", 0);
     }
 
     private void OnEnable()
